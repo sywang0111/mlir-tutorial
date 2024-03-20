@@ -44,6 +44,6 @@ target_link_libraries(
 )
 
 # add_subdirectory(ex3-dialect)
-# add_subdirectory(ex4-beautiful-dialect)
+add_subdirectory(ex4-beautiful-dialect)
 # add_subdirectory(ex5-pass)
-add_subdirectory(ex7-convert)
+# add_subdirectory(ex7-convert)

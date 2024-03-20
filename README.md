@@ -859,11 +859,11 @@ vscode 提供 mlir 扩展，可以为我们写 tablegen 文件提供帮助。在
     )
     ```
 
-11. 简单使用 `ninja toy-opt`
-    * `./toy-opt --help` 可以打文档，里面应该有 cse 和 canonicalize 两个 pass
-    * `./toy-opt ../ex3-dialect/ex3.mlir` 读文件
-    * `./toy-opt -canonicalize ../ex3-dialect/ex3-cse.mlir`，可以做 dce
-    * `./toy-opt -cse ../ex3-dialect/ex3-cse.mlir`，可以做 cse
+11. 注意使用 `ninja ex3-opt` (而不是`ninja`，这是由于tools/toy-opt/CMakeLists.txt中使用add_mlir_tool，不会将target加到默认目标里，需要手动ninja ex3-opt来编译)
+    * `./ex3-opt --help` 可以打文档，里面应该有 cse 和 canonicalize 两个 pass
+    * `./ex3-opt ../ex3-dialect/ex3.mlir` 读文件
+    * `./ex3-opt -canonicalize ../ex3-dialect/ex3-cse.mlir`，可以做 dce
+    * `./ex3-opt -cse ../ex3-dialect/ex3-cse.mlir`，可以做 cse
 
 为什么 mlir 知道我们的 Op 可以被 CSE 和 DCE 呢，因为我们给 Op 标记了 `Pure` Trait，这表示这个 Op 是纯函数。`Pure` Trait 会自动帮我们注册对应 Op 的 CSE 和 DCE 模式。
 

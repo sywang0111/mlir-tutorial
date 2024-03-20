@@ -14,12 +14,14 @@ def AddOp : ToyOp<"add", [Pure]> {
   let summary = "add operation";
   let arguments = (ins Variadic<AnyInteger>:$inputs);
   let results = (outs AnyInteger:$result);
+  let assemblyFormat = "$inputs attr-dict `:` type($inputs) `->` type($result)";
 }
 
 def SubOp : ToyOp<"sub", [Pure]> {
   let summary = "sub operation";
   let arguments = (ins AnyInteger:$lhs, AnyInteger:$rhs);
   let results = (outs AnyInteger:$result);
+  let hasVerifier = true;
 }
 
 def ConstantOp : ToyOp<"const", [Pure]> {

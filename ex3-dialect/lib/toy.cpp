@@ -14,3 +14,10 @@ void ToyDialect::initialize() {
 #include "toy/Toy.cpp.inc"
   >();
 }
+
+LogicalResult SubOp::verify() {
+  if (getLhs().getType() != getRhs().getType())
+    return this->emitError() << "Lhs Type " << getLhs().getType()
+      << " not equal to rhs " << getRhs().getType(); 
+  return success();
+}
